@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0tw5xdlt1v43"]
+
+[ext_resource type="AudioStream" uid="uid://bjfum5f053q77" path="res://Assets/Undertale - Megalovania.mp3" id="1_idego"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_idego")
+autoplay = true

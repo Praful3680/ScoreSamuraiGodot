@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://78wchv0ijpmu"]
+
+[ext_resource type="Script" path="res://Scripts/fire_enemy.gd" id="1_5xqp8"]
+[ext_resource type="Texture2D" uid="uid://u8bw4q0gutrr" path="res://Assets/Enemy Assets/Fire_Spirit/Idle_2.png" id="1_gwmr6"]
+[ext_resource type="PackedScene" uid="uid://bk4iwwrrut0xl" path="res://Scenes/killzone.tscn" id="2_gvt5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mqo2"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxwxj"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8axc4"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndpd1"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3thtf"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2pb7"]
+atlas = ExtResource("1_gwmr6")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ntot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mqo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxwxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8axc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndpd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3thtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2pb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul2mf"]
+radius = 12.0
+
+[node name="Fire Enemy" type="Node2D"]
+script = ExtResource("1_5xqp8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -29)
+sprite_frames = SubResource("SpriteFrames_8ntot")
+autoplay = "default"
+frame = 5
+frame_progress = 0.89007
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(20, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(-20, 0)
+
+[node name="Killzone" parent="." instance=ExtResource("2_gvt5c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_ul2mf")

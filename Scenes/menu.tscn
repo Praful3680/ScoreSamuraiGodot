@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://1st1fak5spe7"]
+
+[ext_resource type="Script" path="res://Scripts/quit.gd" id="1_lnkxt"]
+[ext_resource type="FontFile" uid="uid://86biprut1ljv" path="res://Assets/vcr_osd_mono/VCR_OSD_MONO_1.001.ttf" id="2_fghhw"]
+[ext_resource type="Texture2D" uid="uid://dmfcbav13k34o" path="res://Assets/Pixel BG/PNG/summer8/Summer8.png" id="3_x6dh2"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 285.0
+offset_right = 553.0
+offset_bottom = 351.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+script = ExtResource("1_lnkxt")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 308.0
+offset_top = 146.0
+offset_right = 840.0
+offset_bottom = 203.0
+theme_override_fonts/font = ExtResource("2_fghhw")
+theme_override_font_sizes/font_size = 64
+text = "Score Samurai "
+
+[node name="Summer8" type="Sprite2D" parent="."]
+position = Vector2(545, 163)
+texture = ExtResource("3_x6dh2")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="MarginContainer/VBoxContainer/Quit" method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/Quit" method="_on_pressed"]
